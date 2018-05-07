@@ -26,6 +26,7 @@ namespace Pacman
         Monster redGhost;
         Monster greenGhost;
         Monster yellowGhost;
+        Monster pinkGhost;
 
         public Main()
         {
@@ -77,9 +78,18 @@ namespace Pacman
             yellowGhost.PrevY = 10;
             yellowGhost.PrevAngle = 0;
             yellowGhost.Sprites = Image.FromFile("../../images/ghostYellow.png");
+
+            //pink ghost
+            pinkGhost = new Monster();
+            pinkGhost.X = 8;
+            pinkGhost.Y = 10;
+            pinkGhost.Angle = 3;
+            pinkGhost.Wall = 0;
+            pinkGhost.PrevX = 8;
+            pinkGhost.PrevY = 10;
+            pinkGhost.PrevAngle = 0;
+            pinkGhost.Sprites = Image.FromFile("../../images/ghostPink.png");
             #endregion
-
-
         }
 
         public void drawField(int x, int y, int size, SolidBrush kleur, int img)
@@ -169,12 +179,14 @@ namespace Pacman
             redGhost.PrevAngle = redGhost.Angle;
             greenGhost.PrevAngle = greenGhost.Angle;
             yellowGhost.PrevAngle = yellowGhost.Angle;
+            pinkGhost.PrevAngle = pinkGhost.Angle;
 
             //check for walls
             wallDetect(pacman.Angle, pacman.X, pacman.Y, ref pacman.Wall);
             wallDetect(greenGhost.Angle, greenGhost.X, greenGhost.Y, ref greenGhost.Wall);
             wallDetect(redGhost.Angle, redGhost.X, redGhost.Y, ref redGhost.Wall);
             wallDetect(yellowGhost.Angle, yellowGhost.X, yellowGhost.Y, ref yellowGhost.Wall);
+            wallDetect(pinkGhost.Angle, pinkGhost.X, pinkGhost.Y, ref pinkGhost.Wall);
 
             // wall test pacman
             if (pacman.Wall == 1)
@@ -206,16 +218,24 @@ namespace Pacman
                 wallDetect(yellowGhost.Angle, yellowGhost.X, yellowGhost.Y, ref yellowGhost.Wall);
             }
 
+            while (pinkGhost.Wall == 1)
+            {
+                pinkGhost.Angle = rndAngle.Next(1, 5);
+                wallDetect(pinkGhost.Angle, pinkGhost.X, pinkGhost.Y, ref pinkGhost.Wall);
+            }
+
             moveSprite(redGhost.Angle, ref redGhost.X, ref redGhost.Y);
             moveSprite(greenGhost.Angle, ref greenGhost.X, ref greenGhost.Y);
             moveSprite(yellowGhost.Angle, ref yellowGhost.X, ref yellowGhost.Y);
+            moveSprite(pinkGhost.Angle, ref pinkGhost.X, ref pinkGhost.Y);
 
             eraseSteps(greenGhost.PrevX, greenGhost.PrevY);
             eraseSteps(redGhost.PrevX, redGhost.PrevY);
             eraseSteps(yellowGhost.PrevX, yellowGhost.PrevY);
+            eraseSteps(pinkGhost.PrevX, pinkGhost.PrevY);
             eraseSteps(pacman.PrevX, pacman.PrevY);
 
-            drawSprites(pacman.X, pacman.Y, redGhost.X, redGhost.Y, greenGhost.X, greenGhost.Y, yellowGhost.X, yellowGhost.Y);
+            drawSprites(pacman.X, pacman.Y, redGhost.X, redGhost.Y, greenGhost.X, greenGhost.Y, yellowGhost.X, yellowGhost.Y, pinkGhost.X, pinkGhost.Y);
             loseLife();
             scoreCount();
             countDots();
@@ -290,7 +310,7 @@ namespace Pacman
                 col += 1;
             }
         }
-        private void drawSprites(int pX, int pY, int grX, int grY, int ggX, int ggY, int gyX, int gyY)
+        private void drawSprites(int pX, int pY, int grX, int grY, int ggX, int ggY, int gyX, int gyY, int gpX, int gpY)
         {
             pX = pX * blokSize;
             pY = pY * blokSize;
@@ -300,11 +320,14 @@ namespace Pacman
             ggY = ggY * blokSize;
             gyX = gyX * blokSize;
             gyY = gyY * blokSize;
+            gpX = gpX * blokSize;
+            gpY = gpY * blokSize;
             // drawGrid();
             paper.DrawImage(pacman.Sprites, pX, pY, blokSize, blokSize);
             paper.DrawImage(redGhost.Sprites, grX, grY, blokSize, blokSize);
             paper.DrawImage(greenGhost.Sprites, ggX, ggY, blokSize, blokSize);
             paper.DrawImage(yellowGhost.Sprites, gyX, gyY, blokSize, blokSize);
+            paper.DrawImage(pinkGhost.Sprites, gpX, gpY, blokSize, blokSize);
         }
 
         private void wallDetect(int angle, int x, int y, ref int wall) //simulatie maken van een toekomstige stap
@@ -357,7 +380,7 @@ namespace Pacman
         {
             bool justLostLife = false;
             if ((pacman.X == redGhost.X) && (pacman.Y == redGhost.Y) || (pacman.X == greenGhost.X) && (pacman.Y == greenGhost.Y)
-                || (pacman.X == yellowGhost.X) && (pacman.Y == yellowGhost.Y))
+                || (pacman.X == yellowGhost.X) && (pacman.Y == yellowGhost.Y) || (pacman.X == pinkGhost.X) && (pacman.Y == pinkGhost.Y))
             {
                 lives -= 1;
                 justLostLife = true;
@@ -366,7 +389,7 @@ namespace Pacman
             {
                 level = 1;
                 tmrStep.Enabled = false;
-                MessageBox.Show("Jou score is: " + score, "Game Over...");
+                MessageBox.Show("Your score is: " + score, "Game Over...");
                 resetProgress();
                 paper.Clear(Color.Black);
                 resetField();
@@ -424,14 +447,17 @@ namespace Pacman
             redGhost.Angle = 3;
             greenGhost.Angle = 3;
             yellowGhost.Angle = 3;
+            pinkGhost.Angle = 3;
             greenGhost.X = 11;
             greenGhost.Y = 10;
             yellowGhost.X = 9;
             yellowGhost.Y = 10;
+            pinkGhost.X = 8;
+            pinkGhost.Y = 10;
             drawGrid();
             pacman.Sprites = pacman.pacmanLeft;
 
-            drawSprites(pacman.X, pacman.Y, redGhost.X, redGhost.Y, greenGhost.X, greenGhost.Y, yellowGhost.X, yellowGhost.Y);
+            drawSprites(pacman.X, pacman.Y, redGhost.X, redGhost.Y, greenGhost.X, greenGhost.Y, yellowGhost.X, yellowGhost.Y, pinkGhost.X, pinkGhost.Y);
         }
 
         private void getOldSteps() // vervangen van oude met nieuwe positie
@@ -444,6 +470,8 @@ namespace Pacman
             redGhost.PrevY = redGhost.Y;
             yellowGhost.PrevX = yellowGhost.X;
             yellowGhost.PrevY = yellowGhost.Y;
+            pinkGhost.PrevX = pinkGhost.X;
+            pinkGhost.PrevY = pinkGhost.Y;
         }
 
         private void eraseSteps(int x, int y)
@@ -508,12 +536,12 @@ namespace Pacman
             resetField();
             resetProgress();
             pacman.Sprites = pacman.pacmanLeft;
-            drawSprites(pacman.X, pacman.Y, redGhost.X, redGhost.Y, greenGhost.X, greenGhost.Y, yellowGhost.X, yellowGhost.Y);
+            drawSprites(pacman.X, pacman.Y, redGhost.X, redGhost.Y, greenGhost.X, greenGhost.Y, yellowGhost.X, yellowGhost.Y, pinkGhost.X, pinkGhost.Y);
             started = 1;
         }
         private void setGrid()
         {
-            if (level == 0)
+            if (level == 1)
             {
                 for (int x = 0; x < 20; x++)
                 {
