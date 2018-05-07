@@ -513,7 +513,7 @@ namespace Pacman
         }
         private void setGrid()
         {
-            if (level % 2 == 0)
+            if (level % 2 == 0) //if even numbered level play grid2
             {
                 for (int x = 0; x < 20; x++)
                 {
