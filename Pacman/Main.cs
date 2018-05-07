@@ -513,7 +513,15 @@ namespace Pacman
         }
         private void setGrid()
         {
-            if (level % 2 == 0) //if even numbered level play grid2
+            if (level == 0)
+            {
+                for (int x = 0; x < 20; x++)
+                {
+                    for (int y = 0; y < 20; y++)
+                    { muren.Grid[x, y] = muren.Grid3[x, y]; }//first level, play new level
+                }
+            }
+            else if (level % 2 == 0) //if even numbered level play grid2
             {
                 for (int x = 0; x < 20; x++)
                 {

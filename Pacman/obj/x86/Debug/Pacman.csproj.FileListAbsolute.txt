@@ -101,3 +101,18 @@ C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week01\W1 Pacman\Pacman\Pacman\o
 C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week01\W1 Pacman\Pacman\Pacman\obj\x86\Debug\Pacman.application
 C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week01\W1 Pacman\Pacman\Pacman\obj\x86\Debug\Pacman.exe
 C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week01\W1 Pacman\Pacman\Pacman\obj\x86\Debug\Pacman.pdb
+C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week06\CIS269week6Proj\Pacman\bin\Debug\Pacman.exe.manifest
+C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week06\CIS269week6Proj\Pacman\bin\Debug\Pacman.application
+C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week06\CIS269week6Proj\Pacman\bin\Debug\Pacman.exe
+C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week06\CIS269week6Proj\Pacman\bin\Debug\Pacman.pdb
+C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week06\CIS269week6Proj\Pacman\obj\x86\Debug\Pacman.csprojResolveAssemblyReference.cache
+C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week06\CIS269week6Proj\Pacman\obj\x86\Debug\Pacman.Help.resources
+C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week06\CIS269week6Proj\Pacman\obj\x86\Debug\Pacman.Main.resources
+C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week06\CIS269week6Proj\Pacman\obj\x86\Debug\Pacman.Properties.Resources.resources
+C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week06\CIS269week6Proj\Pacman\obj\x86\Debug\Pacman.Splash.resources
+C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week06\CIS269week6Proj\Pacman\obj\x86\Debug\Pacman.csproj.GenerateResource.cache
+C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week06\CIS269week6Proj\Pacman\obj\x86\Debug\Pacman.csproj.CoreCompileInputs.cache
+C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week06\CIS269week6Proj\Pacman\obj\x86\Debug\Pacman.exe.manifest
+C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week06\CIS269week6Proj\Pacman\obj\x86\Debug\Pacman.application
+C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week06\CIS269week6Proj\Pacman\obj\x86\Debug\Pacman.exe
+C:\Users\johnm\Google Drive\2018-Spring\CIS-269\Week06\CIS269week6Proj\Pacman\obj\x86\Debug\Pacman.pdb
