@@ -347,7 +347,7 @@ namespace Pacman
             //added additional checks to prevent bug of crash on teleport key in 
             if (muren.Grid[pacman.Y, pacman.X] == 0 && (!(pacman.Y >= muren.Grid.GetLength(0)) && !(pacman.X >= muren.Grid.GetLength(1)) && pacman.X >= 0 && pacman.Y >= 0))
             {
-                score += 5;
+                score += 10; //point value changed to ten
                 lblScore.Text = Convert.ToString(score);
                 muren.Grid[pacman.Y, pacman.X] = 2;
             }
