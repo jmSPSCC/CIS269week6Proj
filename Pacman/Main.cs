@@ -400,6 +400,7 @@ namespace Pacman
             if (justLostLife && lives > 0) //if you still have lives left but just lost a life
             {
                 //play a sound and pause the game
+                //sound downloaded from SoundBible.com
                 (new SoundPlayer(@"C:\Users\tdew\Source\Repos\CIS269week6Proj\Pacman\sounds\Jump.wav")).Play();
                 System.Threading.Thread.Sleep(2500);
                       
