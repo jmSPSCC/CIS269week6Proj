@@ -49,7 +49,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>N5JGQDFru0bfbk5QFxZf1kM+XLQ=</dsig:DigestValue>
+        <dsig:DigestValue>X7xGR9eo37cq+4wVRqkoG0IA66Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -69,6 +69,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>m71Isli/oazwUQY1tw6ad8nLym0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="sounds\Jump.wav" size="16140">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>2c8TnzYvYVZE/DAK7d0jz82ysKU=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

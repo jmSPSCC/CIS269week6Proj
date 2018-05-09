@@ -155,9 +155,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\dot.jpg" />
+    <Content Include="sounds\Jump.wav" />
     <None Include="images\start.jpg" />
     <Content Include="images\wall.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

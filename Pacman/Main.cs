@@ -377,8 +377,7 @@ namespace Pacman
             }
         }
 
-        //looking to add SoundPlayer in order to play a sound when Pacman dies; need to find an actual sound to add to the project
-        SoundPlayer simpleSound = new SoundPlayer(@"c:\Media\pacman.wav");
+        //SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\tdew\Source\Repos\CIS269week6Proj\Pacman\sounds\Jump.wav");
 
         private void loseLife() // checken of pacman op dezelfde positie als een geest is getekend, indien ja: leven kwijt
         {
@@ -400,10 +399,10 @@ namespace Pacman
             }
             if (justLostLife && lives > 0) //if you still have lives left but just lost a life
             {
-                //pause game here
+                //play a sound and pause the game
+                (new SoundPlayer(@"C:\Users\tdew\Source\Repos\CIS269week6Proj\Pacman\sounds\Jump.wav")).Play();
                 System.Threading.Thread.Sleep(2500);
-                //play a sound - have to work on getting the audio still
-                (new SoundPlayer(@"/Project;component/sounds/pacman.wav")).Play();
+                      
                 //move pacman back to center
                 pacman.X = 10;
                 pacman.Y = 12;
