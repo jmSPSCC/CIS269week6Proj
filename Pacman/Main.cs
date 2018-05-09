@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Windows.Forms;
 
@@ -376,6 +377,9 @@ namespace Pacman
             }
         }
 
+        //looking to add SoundPlayer in order to play a sound when Pacman dies; need to find an actual sound to add to the project
+        SoundPlayer simpleSound = new SoundPlayer(@"c:\Media\pacman.wav");
+
         private void loseLife() // checken of pacman op dezelfde positie als een geest is getekend, indien ja: leven kwijt
         {
             bool justLostLife = false;
@@ -398,6 +402,8 @@ namespace Pacman
             {
                 //pause game here
                 System.Threading.Thread.Sleep(2500);
+                //play a sound - have to work on getting the audio still
+                (new SoundPlayer(@"/Project;component/sounds/pacman.wav")).Play();
                 //move pacman back to center
                 pacman.X = 10;
                 pacman.Y = 12;
