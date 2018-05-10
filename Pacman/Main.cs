@@ -28,6 +28,9 @@ namespace Pacman
         Monster yellowGhost;
         Monster pinkGhost;
 
+        double secondsPaused = 0;
+        bool isPaused = false;
+
         public Main()
         {
             InitializeComponent();
@@ -117,7 +120,7 @@ namespace Pacman
 
         private void Main_KeyDown(object sender, KeyEventArgs e)
         {
-            if (started == 1)
+            if (started == 1 && !isPaused)
             {
                 if (e.KeyData == Keys.Left)
                 {
@@ -173,6 +176,19 @@ namespace Pacman
 
         private void tmrStep_Tick(object sender, EventArgs e)
         {
+            if (isPaused)
+            {
+                //because this ticks once every 200ms and we want to pause for 3 seconds, 
+                secondsPaused += .2;
+                if (secondsPaused >= 3)
+                {
+                    isPaused = false;
+                }
+                else
+                {
+                    return;
+                }
+            }
             getOldSteps();
 
             //keep current angle
@@ -397,14 +413,15 @@ namespace Pacman
             if (justLostLife && lives > 0) //if you still have lives left but just lost a life
             {
                 //pause game here
-                System.Threading.Thread.Sleep(2500);
+                isPaused = true;
                 //move pacman back to center
+                pacman.Angle = 1;
                 pacman.X = 10;
                 pacman.Y = 12;
+                drawGrid();
             }
             lblLivesCount.Text = Convert.ToString(lives);
         }
-
 
         private void countDots() // telt de resterende dots voor het spel is uitgespeeld
         {
