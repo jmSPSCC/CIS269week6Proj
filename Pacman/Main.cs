@@ -29,6 +29,9 @@ namespace Pacman
         Monster yellowGhost;
         Monster pinkGhost;
 
+        double secondsPaused = 0;
+        bool isPaused = false;
+
         public Main()
         {
             InitializeComponent();
@@ -118,7 +121,7 @@ namespace Pacman
 
         private void Main_KeyDown(object sender, KeyEventArgs e)
         {
-            if (started == 1)
+            if (started == 1 && !isPaused)
             {
                 if (e.KeyData == Keys.Left)
                 {
@@ -174,6 +177,20 @@ namespace Pacman
 
         private void tmrStep_Tick(object sender, EventArgs e)
         {
+            if (isPaused)
+            {
+                //because this ticks once every 200ms and we want to pause for 3 seconds, 
+                secondsPaused += .2;
+                if (secondsPaused >= 3)
+                {
+                    isPaused = false;
+                    secondsPaused = 0;
+                }
+                else
+                {
+                    return;
+                }
+            }
             getOldSteps();
 
             //keep current angle
@@ -371,13 +388,11 @@ namespace Pacman
             //added additional checks to prevent bug of crash on teleport key in 
             if (muren.Grid[pacman.Y, pacman.X] == 0 && (!(pacman.Y >= muren.Grid.GetLength(0)) && !(pacman.X >= muren.Grid.GetLength(1)) && pacman.X >= 0 && pacman.Y >= 0))
             {
-                score += 10; //point value changed to ten
+                score += ((5 * level) + 5); //point value change depending on level, 10 for one, 15 for 2, 20 for 3, etc
                 lblScore.Text = Convert.ToString(score);
                 muren.Grid[pacman.Y, pacman.X] = 2;
             }
         }
-
-        //SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\tdew\Source\Repos\CIS269week6Proj\Pacman\sounds\Jump.wav");
 
         private void loseLife() // checken of pacman op dezelfde positie als een geest is getekend, indien ja: leven kwijt
         {
@@ -399,19 +414,20 @@ namespace Pacman
             }
             if (justLostLife && lives > 0) //if you still have lives left but just lost a life
             {
-                //MessageBox.Show(System.IO.Directory.GetCurrentDirectory());
                 //play a sound and pause the game
                 //sound downloaded from SoundBible.com
                 (new SoundPlayer("..\\..\\sounds\\Jump.wav")).Play();
-                System.Threading.Thread.Sleep(2500);
-                      
+                //pause game here
+                isPaused = true;
                 //move pacman back to center
+                pacman.Angle = 1;
+                pacman.PrevAngle = 1;
                 pacman.X = 10;
                 pacman.Y = 12;
+                drawGrid();
             }
             lblLivesCount.Text = Convert.ToString(lives);
         }
-
 
         private void countDots() // telt de resterende dots voor het spel is uitgespeeld
         {
@@ -441,6 +457,8 @@ namespace Pacman
             score = 0;
             lblLivesCount.Text = Convert.ToString(lives);
             lblScore.Text = Convert.ToString(score);
+            isPaused = false;
+            secondsPaused = 0;
         }
 
         private void resetField()
